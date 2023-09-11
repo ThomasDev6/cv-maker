@@ -5,25 +5,49 @@ on:
     push:
 
 jobs:
-  build-test:
-    runs-on: ubuntu-latest # The type of machine to run on
-    steps: # Etape de notre job
-      - uses: actions/checkout@v4 # Checkout our repository
+  build-test-pnpm:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
 
-      - uses: oven-sh/setup-bun@v1 # Setup bun
+      - uses: pnpm/action-setup@v2
         with:
-          bun-version: latest
+          version: latest
 
-      - name: Install depdenencies
-        run: bun install
+      - name: Install dependencies
+        run: pnpm install
 
       - name: Build
-        run: bun run build
+        run: pnpm run build
 
       - name: Run server
         run: | # Pipe pour faire un multi-line
-          bun run preview &
+          pnpm run preview &
           sleep 5
 
       - name: Curl the server
         run: curl -I http://localhost:4173
+
+#  build-test-bun:
+#    runs-on: ubuntu-latest # The type of machine to run on
+#    steps: # Etape de notre job
+#      - uses: actions/checkout@v4 # Checkout our repository
+#
+#      - uses: oven-sh/setup-bun@v1 # Setup bun
+#        with:
+#          bun-version: latest
+#
+#      - name: Install depdenencies
+#        run: bun install
+#
+#      - name: Build
+#        run: bun run build
+#
+#      - name: Run server
+#        run: | # Pipe pour faire un multi-line
+#          bun run preview &
+#          sleep 5
+#
+#      - name: Curl the server
+#        run: curl -I http://localhost:4173
+
