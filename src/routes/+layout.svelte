@@ -1,4 +1,5 @@
 <script>
+
 	import Footer from '$lib/component/ui/footer.svelte';
 	import '../app.css';
 	import dayjs from 'dayjs';
