@@ -5,8 +5,27 @@ on:
     push:
 
 jobs:
-  hello-world:
+  build-test:
     runs-on: ubuntu-latest # The type of machine to run on
     steps: # Etape de notre job
-      - uses: actions/checkout@v2 # Checkout our repository
+      - uses: actions/checkout@v4 # Checkout our repository
+
+      - uses: oven-sh/setup-bun@v1 # Setup bun
+        with:
+          bun-version: '1.0.0'
+
+      - name: Install depdenencies
+        run: bun install
+
+      - name: Build
+        run: bun build
+
+      - name: Run server
+        run: | # Pipe pour faire un multi-line
+          bun run preview &
+          sleep 3
+
+      - name: Curl the server
+        run: curl -I http://localhost:4000
+
       - run: echo "Hello, world!"
