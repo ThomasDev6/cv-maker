@@ -55,10 +55,10 @@ jobs:
         run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Buld Project Artifacts
-        run: vercel build --token${{ secrets.VERCEL_TOKEN }}
+        run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Deploy Project Artifacts to Vercel
-        run: vercel deploy --prebuild --token${{ secrets.VERCEL_TOKEN }}
+        run: vercel deploy --prebuild --token=${{ secrets.VERCEL_TOKEN }}
 
 #  build-test-bun:
 #    runs-on: ubuntu-latest # The type of machine to run on
