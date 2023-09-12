@@ -8,7 +8,7 @@
 	let metaData: Partial<IMetaTagProperties> = {
 		title: 'CV - ' + data.contactInfo.name,
 		description:
-			'Bienvenue sur mon CV en ligne. Vous trouverez ici toutes les informations concernant mes expériences, compétences, formations et coordonnées. N’hésitez pas à me contacter pour toute proposition ou pour plus d’informations.',
+			'Salut C\'est moi',
 		url: `https://cv.bnei.dev`,
 		logoUrl: 'https://cv.bnei.dev/favicon-32x32.png',
 		keywords: ['CV', data.contactInfo.name, ...data.skills.map((skill) => skill.name)],
