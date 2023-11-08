@@ -8,6 +8,12 @@ pipeline {
               // Insert build steps here
           }
       }
+      stage('Build 2') {
+                steps {
+                    echo 'On test Jenkins'
+
+                }
+            }
       stage('Test') { // Stage 2: Test
           steps {
               echo 'Testing the project...'
